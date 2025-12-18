@@ -1,0 +1,52 @@
+version: 2
+
+sources:
+  - name: raw_shared
+    description: "Raw landing zone in BigQuery (Airbyte outputs). Tables include tenant_id and load metadata."
+    database: "{{ target.project }}"
+    schema: raw_shared
+
+    tables:
+      - name: shopify_orders
+        description: "Shopify orders (raw)."
+        columns:
+          - name: tenant_id
+            tests: [not_null]
+          - name: id
+            tests: [not_null]
+          - name: updated_at
+            tests: [not_null]
+
+      - name: shopify_order_line_items
+        description: "Shopify order line items (raw)."
+        columns:
+          - name: tenant_id
+            tests: [not_null]
+          - name: order_id
+            tests: [not_null]
+          - name: updated_at
+            tests: [not_null]
+
+      - name: shopify_refunds
+        description: "Shopify refunds (raw)."
+        columns:
+          - name: tenant_id
+            tests: [not_null]
+          - name: refund_id
+            tests: [not_null]
+          - name: order_id
+            tests: [not_null]
+          - name: created_at
+            tests: [not_null]
+
+      - name: qb_expenses
+        description: "QuickBooks expenses (raw)."
+        columns:
+          - name: tenant_id
+            tests: [not_null]
+          - name: txn_id
+            tests: [not_null]
+          - name: txn_date
+            tests: [not_null]
+          - name: updated_at
+            tests: [not_null]

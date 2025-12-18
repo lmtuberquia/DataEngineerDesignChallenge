@@ -1,0 +1,11 @@
+drivepoint_finance:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: your-gcp-project
+      dataset: analytics_shared
+      location: US
+      threads: 4
+      timeout_seconds: 300

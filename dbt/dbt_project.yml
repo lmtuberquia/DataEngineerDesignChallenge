@@ -1,0 +1,34 @@
+name: drivepoint_finance
+version: "1.0.0"
+config-version: 2
+
+profile: drivepoint_finance
+
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  drivepoint_finance:
+    +persist_docs:
+      relation: true
+      columns: true
+
+    staging:
+      +materialized: view
+      +tags: ["staging"]
+
+    intermediate:
+      +materialized: table
+      +tags: ["intermediate"]
+
+    marts:
+      +tags: ["marts"]
+      # Facts are typically tables / incremental
+      +materialized: table
