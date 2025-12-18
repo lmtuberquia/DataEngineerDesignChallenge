@@ -181,4 +181,4 @@ Recommended approach (shared datasets):
 
 ## Architecture Overview (Diagram)
 
-![Architecture Overview](architecture_overview.svg)
+![Architecture Overview](architecture_overview1.svg)
